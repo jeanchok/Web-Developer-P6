@@ -13,7 +13,9 @@ mongoose.connect('mongodb+srv://hidhan:MYhpL2vCtp1L1Uvl@cluster0.mbvam.mongodb.n
 .then(() => console.log('Connexion à MongoDB réussie !'))
 .catch(() => console.log('Connexion à MongoDB échouée !'));
 
+
 const app = express();
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -22,8 +24,9 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use('/images', express.static(path.join(__dirname, 'images')));
+
 app.use(bodyParser.json());
+
 app.use('/api/sauces', saucesRoutes);
 app.use('/api/auth', userRoutes);
 
