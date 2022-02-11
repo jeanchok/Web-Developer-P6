@@ -1,2 +1,3 @@
 node_modules
+somefolder/*
 !images/.gitkeep
