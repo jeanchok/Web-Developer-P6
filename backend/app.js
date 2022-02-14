@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const saucesRoutes = require('./routes/sauces');
 const userRoutes = require('./routes/user');
 const path = require('path');
+const helmet = require("helmet");
 
 mongoose.connect('mongodb+srv://hidhan:MYhpL2vCtp1L1Uvl@cluster0.mbvam.mongodb.net/Cluster0?retryWrites=true&w=majority',
 {
@@ -16,7 +17,7 @@ mongoose.connect('mongodb+srv://hidhan:MYhpL2vCtp1L1Uvl@cluster0.mbvam.mongodb.n
 
 const app = express();
 
-
+app.use(helmet());
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
