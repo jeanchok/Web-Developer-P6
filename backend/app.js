@@ -5,8 +5,9 @@ const saucesRoutes = require('./routes/sauces');
 const userRoutes = require('./routes/user');
 const path = require('path');
 const helmet = require("helmet");
+const dotenv = require('dotenv').config();
 
-mongoose.connect('mongodb+srv://hidhan:MYhpL2vCtp1L1Uvl@cluster0.mbvam.mongodb.net/Cluster0?retryWrites=true&w=majority',
+mongoose.connect(`${process.env.SECRET_KEY}`,
 {
     useNewUrlParser: true,
     useUnifiedTopology: true
