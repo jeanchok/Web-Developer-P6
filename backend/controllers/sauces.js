@@ -6,6 +6,7 @@ exports.createSauces = (req, res, next) => {
   delete sauceObject._id;
   const sauce = new Sauce({
     ...sauceObject,
+    userId: req.auth.userId,
     imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`,
     likes : 0,
     dislikes : 0,
@@ -64,7 +65,7 @@ exports.modifySauces = (req, res, next) => {
         } : { ...req.body };
       if(req.file){
         const filename = sauce.imageUrl.split('/images/')[1];
-        fs.unlink(`images/${filename}`)
+        fs.unlink(`images/${filename}`, ()=> { console.log("Image supprimée !")})
       };
       Sauce.updateOne({ _id: req.params.id }, { ...sauceObject, _id: req.params.id })
       .then(() => {
