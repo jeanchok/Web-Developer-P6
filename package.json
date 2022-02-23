@@ -13,10 +13,12 @@
   "dependencies": {
     "bcrypt": "^5.0.1",
     "concurrently": "^7.0.0",
+    "crypto-js": "^4.1.1",
     "helmet": "^5.0.2",
     "http-server": "^14.1.0",
     "jsonwebtoken": "^8.5.1",
     "live-server": "^1.1.0",
+    "maskdata": "^1.1.6",
     "password-validator": "^5.2.1"
   },
   "devDependencies": {
